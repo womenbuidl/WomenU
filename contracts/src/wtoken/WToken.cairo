@@ -1,4 +1,5 @@
 use contracts::erc20::ERC20::{IERC20DispatcherTrait, IERC20Dispatcher};
+use contracts::usdt::USDT::{IUSDTDispatcherTrait, IUSDTDispatcher};
 use starknet::ContractAddress;
 
 #[starknet::interface]
@@ -12,7 +13,8 @@ mod WToken {
     #[storage]
     struct Storage {
         curve_coefficient: u256,
-        reserve_balance: u256
+        reserve_balance: u256,
+        usdt_contract_address: ContractAddress,
     }
 
     #[event]
@@ -27,6 +29,12 @@ mod WToken {
 
     #[external(v0)]
     impl WToken of super::IWToken<ContractState> {
+        fn set_usdt_contract_address(ref self: ContractState, address: ContractAddress) -> bool {
+            // Optional: Add a check to ensure only an authorized address can call this function.
+            self.usdt_contract_address.write(address);
+            true
+        }
+
         fn buy_tokens(ref self: ContractState, usdt_amount: u256) -> bool {
             let current_supply = IERC20Dispatcher.totalSupply();
             let tokens_to_mint = self.curve_coefficient.read() * usdt_amount;
@@ -54,7 +62,9 @@ mod WToken {
             // Burn tokens from the caller.
             IERC20Dispatcher.transfer(contract_address_const::<0>(), wtoken_amount);
 
-            // TODO: Transfer USDT to the caller.
+            // Transfer USDT to the caller.
+            let usdt_contract_address = self.usdt_contract_address.read();
+            IUSDTDispatcher.transfer(usdt_contract_address, get_caller_address(), usdt_to_return);
 
             true
         }
