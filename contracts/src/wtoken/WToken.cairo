@@ -15,6 +15,7 @@ mod WToken {
         curve_coefficient: u256,
         reserve_balance: u256,
         usdt_contract_address: ContractAddress,
+        owner: ContractAddress,
     }
 
     #[event]
@@ -25,12 +26,14 @@ mod WToken {
     fn constructor(ref self: ContractState, initial_curve_coefficient: u256) {
         self.curve_coefficient.write(initial_curve_coefficient);
         self.reserve_balance.write(0);
+        self.owner.write(get_caller_address());
     }
 
     #[external(v0)]
     impl WToken of super::IWToken<ContractState> {
         fn set_usdt_contract_address(ref self: ContractState, address: ContractAddress) -> bool {
-            // Optional: Add a check to ensure only an authorized address can call this function.
+            assert
+            get_caller_address() == self.owner.read();
             self.usdt_contract_address.write(address);
             true
         }
@@ -41,6 +44,16 @@ mod WToken {
 
             // Update reserve balance.
             self.reserve_balance.write(self.reserve_balance.read() + usdt_amount);
+
+            // Transfer USDT from the caller to this contract.
+            let usdt_contract_address = self.usdt_contract_address.read();
+            IUSDTDispatcher
+                .transferFrom(
+                    usdt_contract_address,
+                    get_caller_address(),
+                    contract_address_const::<WToken_CONTRACT_ADDRESS>(),
+                    usdt_amount
+                );
 
             // Mint new tokens to the caller.
             IERC20Dispatcher.mint(get_caller_address(), tokens_to_mint);
