@@ -4,8 +4,8 @@ import Head from 'next/head';
 export function CustomHead(params) {
   return (
     <Head>
-      <title>STARKNET-REACT-BOILERPLATE</title>
-      <meta name="description" content="STARKNET-REACT-BOILERPLATE" />
+      <title>WomenU</title>
+      <meta name="description" content="WomenU" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );

@@ -147,10 +147,10 @@ export function Button({ key, text, onClick }) {
     <button
       key="{key}"
       type="button"
-      className="bg-white hover:bg-gray-200
-       text-gray-800 focus:ring-4 focus:outline-none
+      className="bg-red-500 hover:bg-red-600
+      text-white focus:ring-4 focus:outline-none
          font-medium rounded-lg text-lg 
-         px-3 py-2 text-center"
+         px-5 py-3 text-center"
       onClick={onClick}
     >
       Connect Wallet
