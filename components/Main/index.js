@@ -130,6 +130,10 @@ function Home() {
             <div className="justify-center flex mt-20 text-2xl font-bold ">
                 WBF mechanism
             </div>
+            <div className="justify-center flex mt-3 px-80 ">
+            <div>   We unite women who are making positive impacts around the world. 
+                Support them with tech, entrepreneurship, community and finance.
+                We are trying a no treasury model, stronger the w token gets, the more we can support women impactors. </div></div>
             <div className="justify-center flex ">
                 <div>
 
@@ -158,13 +162,13 @@ function Home() {
                                 key="{key}"
                                 type="button"
                                 className="bg-black border-2 border-red-500 text-white hover:bg-red-500 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-lg px-5 py-3 text-center mt-5 mx-2">
-                                Buy W Token
+                                Mint W Token
                             </button>
                             <button onClick={sellWToken}
                                 key="{key}"
                                 type="button"
                                 className="bg-black border-2 border-red-500 text-white hover:bg-red-500 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-lg px-5 py-3 text-center mt-5">
-                                Sell W Token
+                                Burn W Token
                             </button>
 
                         </div>
