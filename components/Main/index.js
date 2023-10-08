@@ -130,10 +130,12 @@ function Home() {
             <div className="justify-center flex mt-20 text-2xl font-bold ">
                 WBF mechanism
             </div>
-            <div className="justify-center flex mt-3 px-80 ">
-            <div>   We unite women who are making positive impacts around the world. 
-                Support them with tech, entrepreneurship, community and finance.
-                We are trying a no treasury model, stronger the w token gets, the more we can support women impactors. </div></div>
+            <div className="flex flex-col items-center justify-center mt-3 px-80 ">
+            <p> We unite women who are making positive impacts around the world. </p>
+            <div className="my-3"></div> {/* 再次插入空白div */}
+            <p> Support them with tech, entrepreneurship, community and finance.</p>
+            <div className="my-3"></div> {/* 再次插入空白div */}
+<p> Trying a no treasury model, the stronger the w token gets, the more we can support women impactors. </p></div>
             <div className="justify-center flex ">
                 <div>
 
