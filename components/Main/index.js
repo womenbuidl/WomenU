@@ -8,20 +8,20 @@ function Home() {
 
     const [data, setData] = useState([
         {
-            date: '2023-08-25',
-            address: '0x12345...',
+            date: '2023-10-5',
+            address: '0x0457be51fa481661815eee979a33ab742f060048',
             amountUSDT: 1000,
             amountWToken: 500
         }, {
-            date: '2023-08-25',
-            address: '0x12345...',
-            amountUSDT: 1000,
-            amountWToken: 500
+            date: '2023-10-6',
+            address: '0x0457be51fa481661815eee979a33ab742f060048',
+            amountUSDT: 500,
+            amountWToken: 200
         }, {
-            date: '2023-08-25',
-            address: '0x12345...',
-            amountUSDT: 1000,
-            amountWToken: 500
+            date: '2023-10-7',
+            address: '0x0457be51fa481661815eee979a33ab742f060048',
+            amountUSDT: 300,
+            amountWToken: 1000
         },
         // add more data...
     ]);
@@ -174,12 +174,13 @@ function Home() {
 
                 </div>
             </div>
-
-            <div className="flex items-center p-4 border-b border-gray-300 mt-20 px-80">
+            <div className="text-center text-2xl font-bold mt-10">Mint Record</div>
+            <div className="flex items-center p-4 border-b border-gray-300 mt-10 px-80">
+              
                 <div className="w-1/4">
                     <p className="font-bold">Date</p>
                 </div>
-                <div className="w-1/4">
+                <div className="w-2/4">
                     <p className="font-bold">Address</p>
                 </div>
                 <div className="w-1/4">
@@ -198,7 +199,7 @@ function Home() {
                             item.date
                         }</p>
                     </div>
-                    <div className="w-1/4">
+                    <div className="w-2/4">
                         <p>{
                             item.address
                         }</p>
